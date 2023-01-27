@@ -3,7 +3,7 @@ import config from "../config";
 const connect = async () => {
   mongoose.set("strictQuery", false);
   try {
-    await mongoose.connect(config.MONGODB_URI);
+    await mongoose.connect(config?.MONGODB_URI);
     console.log("Connected");
   } catch (error: any) {
     console.log("Connection failure " + error?.message);
