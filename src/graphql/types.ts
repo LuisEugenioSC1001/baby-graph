@@ -1,6 +1,7 @@
 import {
   GraphQLBoolean,
   GraphQLID,
+  GraphQLInputObjectType,
   GraphQLInt,
   GraphQLList,
   GraphQLObjectType,
@@ -45,6 +46,78 @@ export const GuestType = new GraphQLObjectType({
     },
     gifts: {
       type: new GraphQLList(GiftType),
+    },
+  },
+});
+
+export const GiftInputType = new GraphQLInputObjectType({
+  name: "GiftInputType",
+  fields: {
+    name: {
+      type: GraphQLString,
+    },
+    quantity: {
+      type: GraphQLInt,
+    },
+    unit: {
+      type: GraphQLString,
+    },
+  },
+});
+
+export const GuestInputType = new GraphQLInputObjectType({
+  name: "GuestInputType",
+  fields: {
+    name: {
+      type: GraphQLString,
+    },
+    phone: {
+      type: GraphQLString,
+    },
+    attend: {
+      type: GraphQLBoolean,
+    },
+    companion: {
+      type: GraphQLInt,
+    },
+    gifts: {
+      type: GraphQLString,
+    },
+  },
+});
+
+export const GuestPartialInputType = new GraphQLInputObjectType({
+  name: "GuestPartialInputType",
+  fields: {
+    name: {
+      type: GraphQLString,
+    },
+    phone: {
+      type: GraphQLString,
+    },
+    attend: {
+      type: GraphQLBoolean,
+    },
+    companion: {
+      type: GraphQLInt,
+    },
+    gifts: {
+      type: GraphQLString,
+    },
+  },
+});
+
+export const GiftPartialInputType = new GraphQLInputObjectType({
+  name: "GiftPartialInputType",
+  fields: {
+    name: {
+      type: GraphQLString,
+    },
+    quantity: {
+      type: GraphQLInt,
+    },
+    unit: {
+      type: GraphQLString,
     },
   },
 });
