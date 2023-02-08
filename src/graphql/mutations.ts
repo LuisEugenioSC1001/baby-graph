@@ -41,7 +41,8 @@ export const updateGift: GraphQLFieldConfig<any, any, any> = {
     id: { type: GraphQLID! },
   },
   resolve: async (_: any, { id, data }: any) => {
-    const gift = await Gift.updateOne({ _id: id, ...data });
+    await Gift.updateOne({ _id: id, ...data });
+    const gift = await Gift.findById(id);
     return gift;
   },
 };
@@ -53,13 +54,14 @@ export const updateGuest: GraphQLFieldConfig<any, any, any> = {
     id: { type: GraphQLID! },
   },
   resolve: async (_: any, { id, data }: any) => {
-    const guest = await Guest.updateOne({
+    await Guest.updateOne({
       _id: id,
       ...{
         ...omit(data, "gifts"),
         gifts: JSON.parse(data?.gifts ?? "[]"),
       },
     });
+    const guest = await Guest.findById(id);
     return guest;
   },
 };
