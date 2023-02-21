@@ -7,7 +7,7 @@ import schema from "./graphql/schema";
 
 connect();
 const app = express();
-app.use(cors());
+app.use(cors({ origin: ["https://baby-app.onrender.com"] }));
 app.use(
   "/gql",
   graphqlHTTP({
